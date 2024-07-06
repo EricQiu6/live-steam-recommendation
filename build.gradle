@@ -17,9 +17,22 @@ repositories {
     mavenCentral()
 }
 
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:2023.0.1"
+    }
+}
+
 dependencies {
+    //for authentication with twitch data
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
+    implementation 'org.springframework.security:spring-security-oauth2-client'
+    //for experimenting with controller
     implementation 'net.datafaker:datafaker:2.2.2'
+    //for some spring boot packages
     implementation 'org.springframework.boot:spring-boot-starter-web'
+    //for testing
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
