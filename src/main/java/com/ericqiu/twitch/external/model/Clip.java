@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public record Clip(
         String id,
         String url,
+        //converts to snake case to stay consistent with naming as provided by twitch
         @JsonProperty("embed_url") String embedUrl,
         @JsonProperty("broadcaster_id") String broadcasterId,
         @JsonProperty("broadcaster_name") String broadcasterName,
