@@ -1,0 +1,9 @@
+# ensure that objects returned do not include null
+spring:
+  jackson:
+    default-property-inclusion: non_null
+
+# log HTTP console with a TRACE level/priority
+logging:
+  level:
+    org.apache.coyote.http11.Http11InputBuffer: TRACE # Incoming HTTP requests
