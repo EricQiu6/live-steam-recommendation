@@ -12,6 +12,7 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
+// requests data from each of the twitch api for testing purposes
 @Component
 public class DevelopmentTester implements ApplicationRunner {
 
