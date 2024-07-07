@@ -1,0 +1,29 @@
+package com.ericqiu.twitch.external;
+
+import com.ericqiu.twitch.external.model.Game;
+import java.util.List;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class GameController {
+
+    private final TwitchService twitchService;
+
+    public GameController(TwitchService twitchService) {
+        this.twitchService = twitchService;
+    }
+
+    /*
+    returns specified or top games streaming in Twitch
+     */
+    @GetMapping("/game")
+    public List<Game> getGames(@RequestParam(value = "game_name", required = false) String gameName) {
+        if (gameName == null) {
+            return twitchService.getTopGames();
+        } else {
+            return twitchService.getGames(gameName);
+        }
+    }
+}

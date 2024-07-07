@@ -27,6 +27,7 @@ public class TwitchService {
         return twitchApiClient.getGames(name).data();
     }
 
+    //note that this api can take a list while videos and clips can take one at a time
     public List<Stream> getStreams(List<String> gameIds, int first) {
         return twitchApiClient.getStreams(gameIds, first).data();
     }

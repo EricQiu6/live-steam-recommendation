@@ -31,7 +31,7 @@ public class DevelopmentTester implements ApplicationRunner {
         List<Video> videos = twitchService.getVideos("21779", 2);
         List<Clip> clips = twitchService.getClips("21779", 2);
         List<Stream> streams = twitchService.getStreams(List.of("18122", "21779", "33214"), 10);
-
+        //prints requested data on console
         logger.info(games.toString());
         logger.info(topGames.toString());
         logger.info(videos.toString());
