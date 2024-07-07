@@ -28,9 +28,23 @@ spring:
         provider:
           twitch:
             token-uri: https://id.twitch.tv/oauth2/token
+  # connect to mysql database
+  datasource:
+    # NOTE: environment variables are used to protect sensitive information
+    url: jdbc:mysql://${DATABASE_URL:localhost}:${DATABASE_PORT:3306}/twitch?createDatabaseIfNotExist=true
+    username: ${DATABASE_USERNAME:root}
+    # NOTE: password have to stay consistent with docker-compose.yml
+    password: ${DATABASE_PASSWORD:secret}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  # set sql initialization configurations
+  sql:
+    init:
+      mode: always
+      schema-locations: "classpath:database-init.sql"
 
-# log HTTP console with a TRACE level/priority
+# log HTTP console with TRACE and DEBUG level/priority
 logging:
   level:
     org.apache.coyote.http11.Http11InputBuffer: TRACE # Incoming http requests
     com.ericqiu.twitch.external.TwitchApiClient: DEBUG
+    org.springframework.jdbc.datasource.init: DEBUG

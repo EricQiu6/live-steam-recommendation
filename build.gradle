@@ -24,6 +24,9 @@ dependencyManagement {
 }
 
 dependencies {
+    //for mysql db integration
+    implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
+    runtimeOnly 'com.mysql:mysql-connector-j'
     //for authentication with twitch data
     implementation 'org.springframework.boot:spring-boot-starter-security'
     implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
