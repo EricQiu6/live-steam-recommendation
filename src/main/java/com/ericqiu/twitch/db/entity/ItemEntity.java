@@ -5,11 +5,14 @@ import com.ericqiu.twitch.external.model.Stream;
 import com.ericqiu.twitch.external.model.Video;
 import com.ericqiu.twitch.model.ItemType;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Table;
 
 //a generic item class that wraps different
 // types of data (e.g. stream, video, clip) into one
+@Table("items")
 public record ItemEntity(
-        Long id,
+        @Id Long id,
         @JsonProperty("twitch_id") String twitchId,
         String title,
         String url,
